@@ -1,93 +1,184 @@
-
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Quiz Objecult 2025 - Objetivo Cubatão</title>
-  <style>
-    body { font-family: Arial, sans-serif; padding: 20px; background: #f0f8ff; text-align: center; }
-    h1 { color: #1e3a8a; }
-    .quiz-card { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px #ccc; max-width: 600px; margin: auto; }
-    button { margin: 10px; padding: 10px 20px; border: none; border-radius: 5px; background: #1e40af; color: white; cursor: pointer; }
-    button:hover { background: #1e3a8a; }
-    .logo { max-width: 250px; margin: 20px auto; }
-    .banner { max-width: 90%; margin: 20px auto; border-radius: 10px; }
-  </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz Objecult 2025 - Objetivo Cubatão</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
 
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #f0f8ff;
+            text-align: center;
+            margin: 0;
+        }
+
+        h1 {
+            color: #1e3a8a;
+            font-size: 2rem;
+        }
+
+        .quiz-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #ccc;
+            max-width: 600px;
+            margin: 20px auto;
+        }
+
+        button {
+            margin: 10px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background: #1e40af;
+            color: white;
+            cursor: pointer;
+            font-size: 1rem;
+            width: 100%;
+            max-width: 300px;
+        }
+
+        button:hover {
+            background: #1e3a8a;
+        }
+
+        .logo,
+        .calcula,
+        .carrosel {
+            display: flex;
+            justify-content: center;
+            margin: 20px auto;
+            max-width: 100%;
+        }
+
+        .logo img,
+        .calcula img,
+        .carrosel img {
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        #question-title {
+            font-size: 1.2rem;
+        }
+
+        #options {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #result {
+            font-size: 1.2rem;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            .quiz-card {
+                padding: 15px;
+            }
+
+            button {
+                font-size: 0.95rem;
+                padding: 10px;
+            }
+
+            #question-title {
+                font-size: 1rem;
+            }
+
+            #result {
+                font-size: 1rem;
+            }
+        }
+    </style>
 </head>
+
 <body>
-  
-<div class="logo">
-<img src="./assests/logo.png" alt="">
-</div>
 
-  <h1>Quiz Objecult 2025</h1>
-   <div class="calcula">
-    <img src="./assests/Captura de tela 2025-06-27 204517.png" alt="">
-  </div>
+    <div class="logo">
+        <img src="./assests/logo.png" alt="Logo Objetivo Cubatão" />
+    </div>
 
-  
-  <div class="quiz-card">
-    <h2 id="question-title"></h2>
-    <div id="options"></div>
-    <div id="result" style="margin-top: 20px; font-weight: bold;"></div>
-  </div>
- 
-  </div>
+    <h1>Quiz Objecult 2025</h1>
 
-  <div class="carrosel">
-    <img src="./assests/Captura de tela 2025-06-27 204727.png" alt="">
-  </div>
+    <div class="calcula">
+        <img src="./assests/Captura de tela 2025-06-27 204517.png" alt="Imagem do Homem que Calculava" />
+    </div>
 
- 
-  <script>
-    const questions = [
-      { question: "Quem é o protagonista de 'O Homem que Calculava'?", options: ["Beremiz Samir", "Malba Tahan", "Califa Harun", "Ali Babá"], answer: 0 },
-      { question: "Qual é o talento especial de Beremiz?", options: ["Filosofia", "Culinária", "Matemática", "Música oriental"], answer: 2 },
-      { question: "O autor Malba Tahan é, na verdade, um pseudônimo. Qual é o nome verdadeiro do autor?", options: ["Monteiro Lobato", "Júlio César de Mello e Souza", "Carlos Drummond de Andrade", "João Guimarães Rosa"], answer: 1 },
-      { question: "O livro mistura histórias orientais com problemas matemáticos.", options: ["Verdadeiro", "Falso"], answer: 0 },
-      { question: "Em uma das histórias, Beremiz resolve a partilha de 35 camelos entre três irmãos. O que ele faz?", options: ["Dá camelos extras para todos", "Multiplica os camelos", "Adiciona um camelo e resolve o problema", "Subtrai camelos até o número ser divisível"], answer: 2 },
-      { question: "Qual é o principal objetivo do livro?", options: ["Ensinar álgebra avançada", "Divertir com piadas sobre matemática", "Mostrar a beleza da matemática com histórias", "Apresentar a cultura brasileira"], answer: 2 },
-      { question: "Beremiz usava suas habilidades matemáticas para:", options: ["Ganhar apostas", "Resolver conflitos e impressionar sábios", "Evitar a escola", "Enriquecer com truques"], answer: 1 },
-      { question: "Qual destes valores é fortemente presente na obra?", options: ["Vaidade", "Egoísmo", "Justiça e sabedoria", "Orgulho"], answer: 2 },
-      { question: "A narrativa se passa em um ambiente futurista e tecnológico.", options: ["Verdadeiro", "Falso"], answer: 1 },
-      { question: "Qual o estilo narrativo predominante no livro?", options: ["Científico", "Jornalístico", "Contos orientais com fundo matemático", "Crônica moderna"], answer: 2 },
-    ];
+    <div class="quiz-card">
+        <h2 id="question-title"></h2>
+        <div id="options"></div>
+        <div id="result" style="margin-top: 20px; font-weight: bold;"></div>
+    </div>
 
-    let current = 0, score = 0;
-    const qTitle = document.getElementById('question-title');
-    const optionsDiv = document.getElementById('options');
-    const resultDiv = document.getElementById('result');
+    <div class="carrosel">
+        <img src="./assests/Captura de tela 2025-06-27 204727.png" alt="Carrossel de imagens" />
+    </div>
 
-    function loadQuestion() {
-      const q = questions[current];
-      qTitle.innerText = `${current + 1}. ${q.question}`;
-      optionsDiv.innerHTML = '';
-      q.options.forEach((opt, i) => {
-        const btn = document.createElement('button');
-        btn.innerText = opt;
-        btn.onclick = () => {
-          if (i === q.answer) score += 10;
-          current++;
-          if (current < questions.length) loadQuestion();
-          else showResult();
-        };
-        optionsDiv.appendChild(btn);
-      });
-    }
+    <script>
+        const questions = [
+            { question: "Quem é o protagonista de 'O Homem que Calculava'?", options: ["Beremiz Samir", "Malba Tahan", "Califa Harun", "Ali Babá"], answer: 0 },
+            { question: "Qual é o talento especial de Beremiz?", options: ["Filosofia", "Culinária", "Matemática", "Música oriental"], answer: 2 },
+            { question: "O autor Malba Tahan é, na verdade, um pseudônimo. Qual é o nome verdadeiro do autor?", options: ["Monteiro Lobato", "Júlio César de Mello e Souza", "Carlos Drummond de Andrade", "João Guimarães Rosa"], answer: 1 },
+            { question: "O livro mistura histórias orientais com problemas matemáticos.", options: ["Verdadeiro", "Falso"], answer: 0 },
+            { question: "Em uma das histórias, Beremiz resolve a partilha de 35 camelos entre três irmãos. O que ele faz?", options: ["Dá camelos extras para todos", "Multiplica os camelos", "Adiciona um camelo e resolve o problema", "Subtrai camelos até o número ser divisível"], answer: 2 },
+            { question: "Qual é o principal objetivo do livro?", options: ["Ensinar álgebra avançada", "Divertir com piadas sobre matemática", "Mostrar a beleza da matemática com histórias", "Apresentar a cultura brasileira"], answer: 2 },
+            { question: "Beremiz usava suas habilidades matemáticas para:", options: ["Ganhar apostas", "Resolver conflitos e impressionar sábios", "Evitar a escola", "Enriquecer com truques"], answer: 1 },
+            { question: "Qual destes valores é fortemente presente na obra?", options: ["Vaidade", "Egoísmo", "Justiça e sabedoria", "Orgulho"], answer: 2 },
+            { question: "A narrativa se passa em um ambiente futurista e tecnológico.", options: ["Verdadeiro", "Falso"], answer: 1 },
+            { question: "Qual o estilo narrativo predominante no livro?", options: ["Científico", "Jornalístico", "Contos orientais com fundo matemático", "Crônica moderna"], answer: 2 },
+        ];
 
-    function showResult() {
-      qTitle.innerText = "Fim do Quiz!";
-      optionsDiv.innerHTML = '';
-      resultDiv.innerHTML = `Sua pontuação: ${score} / 100<br>`;
-      if (score >= 80) resultDiv.innerHTML += "Gênio como Beremiz!";
-      else if (score >= 60) resultDiv.innerHTML += "Excelente! Seu raciocínio é afiado.";
-      else if (score >= 40) resultDiv.innerHTML += "Bom, mas leia mais sobre Beremiz.";
-      else resultDiv.innerHTML += "Hora de revisitar a obra e aprender com o Homem que Calculava!";
-    }
+        let current = 0, score = 0;
+        const qTitle = document.getElementById('question-title');
+        const optionsDiv = document.getElementById('options');
+        const resultDiv = document.getElementById('result');
 
-    loadQuestion();
-  </script>
+        function loadQuestion() {
+            const q = questions[current];
+            qTitle.innerText = `${current + 1}. ${q.question}`;
+            optionsDiv.innerHTML = '';
+            q.options.forEach((opt, i) => {
+                const btn = document.createElement('button');
+                btn.innerText = opt;
+                btn.onclick = () => {
+                    if (i === q.answer) score += 10;
+                    current++;
+                    if (current < questions.length) loadQuestion();
+                    else showResult();
+                };
+                optionsDiv.appendChild(btn);
+            });
+        }
+
+        function showResult() {
+            qTitle.innerText = "Fim do Quiz!";
+            optionsDiv.innerHTML = '';
+            resultDiv.innerHTML = `Sua pontuação: ${score} / 100<br>`;
+            if (score >= 80) resultDiv.innerHTML += "Gênio como Beremiz!";
+            else if (score >= 60) resultDiv.innerHTML += "Excelente! Seu raciocínio é afiado.";
+            else if (score >= 40) resultDiv.innerHTML += "Bom, mas leia mais sobre Beremiz.";
+            else resultDiv.innerHTML += "Hora de revisitar a obra e aprender com o Homem que Calculava!";
+           
+        }
+
+       
+
+        loadQuestion();
+    </script>
 </body>
+
 </html>
